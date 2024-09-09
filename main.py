@@ -16,26 +16,26 @@ parser.add_argument("price", type=int)
 
 
 class Main(Resource):
-    def get(self, course_id):
-        if course_id == 0:
+    def get(self, product_id):
+        if product_id == 0:
             return products
         else:
-            return products[course_id]
+            return products[product_id]
 
-    def delete(self, course_id):
-        del products[course_id]
+    def delete(self, product_id):
+        del products[product_id]
         return products
 
-    def post(self, course_id):
-        products[course_id] = parser.parse_args()
+    def post(self, product_id):
+        products[product_id] = parser.parse_args()
         return products
 
-    def put(self, course_id):
-        products[course_id] = parser.parse_args()
+    def put(self, product_id):
+        products[product_id] = parser.parse_args()
         return products
 
 
-api.add_resource(Main, "/api/products/<int:course_id>")
+api.add_resource(Main, "/api/products/<int:product_id>")
 api.init_app(app)
 
 if __name__ == "__main__":
